@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
-import { Credential } from './model/credential';
+import { Credential } from '../model/credential';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,10 +12,9 @@ export class LoginComponent implements OnInit {
   @Input() credential: Credential;
   
   loginFormGroup: FormGroup;
+  model = new Credential;
 
   public styleClass = 'showMe';
-
-  model = new Credential;
   
   constructor() {}
 
