@@ -1,22 +1,25 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Credential } from '../model/credential';
+import { FetchService } from '../utils/fetch.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [ FetchService ]
 })
 export class LoginComponent implements OnInit {
 
   @Output() handleSubmit = new EventEmitter<Credential>();
   @Input() credential: Credential;
   
-  loginFormGroup: FormGroup;
   model = new Credential;
+  loginFormGroup: FormGroup;
 
   public styleClass = 'showMe';
   
-  constructor() {}
+  constructor(private fetchService : FetchService) {}
 
   ngOnInit() {
     this.loginFormGroup = new FormGroup({
@@ -30,10 +33,9 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(loginForm: NgForm) { 
-      console.log('1 SUBMIT***');
-      
-      this.handleSubmit.emit(this.model);
-      loginForm.reset();
+    console.log('1 SUBMIT***');
+    this.handleSubmit.emit(this.model);
+    loginForm.reset();
   }
 
   // get diagnostic() { return JSON.stringify(this.model); }
