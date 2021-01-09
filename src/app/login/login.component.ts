@@ -34,8 +34,14 @@ export class LoginComponent implements OnInit {
 
   onSubmit(loginForm: NgForm) { 
     console.log('1 SUBMIT***');
+    this.populateModel(loginForm);
     this.handleSubmit.emit(this.model);
     loginForm.reset();
+  }
+
+  populateModel(loginForm: NgForm) {
+    this.model.username = this.loginFormGroup.get("username").value;
+    this.model.password = this.loginFormGroup.get("password").value;
   }
 
   // get diagnostic() { return JSON.stringify(this.model); }

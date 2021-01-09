@@ -1,7 +1,7 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class FetchService {
 
     constructor(private http: HttpClient) {}
@@ -13,10 +13,9 @@ export class FetchService {
                 headers: {
                     "Content-Type":"application/json",
                     "Accept" :"application/json",
-                    "Authorization": userToken,
-                    "Connection": "close"
+                    "Authorization": userToken
                 },
-                observe: 'body'
+                observe: 'response'
             },        
         ).toPromise();
     }

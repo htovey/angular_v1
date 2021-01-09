@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FetchService } from './utils/fetch.service';
+import { HttpResponse } from '@angular/common/http'
 import { Credential } from './model/credential';
 
 @Component({
@@ -13,7 +14,6 @@ export class AppComponent {
   constructor(private fetchService: FetchService) {}
 
   public styleClass = 'showMe';
-  Buffer = require('buffer/').Buffer;
 
   ngOnInit(){};
 
@@ -22,12 +22,11 @@ export class AppComponent {
     var tokenBuffer = btoa(credential.username+":"+credential.password);
     const userToken = "Basic "+tokenBuffer;
   
-    var response = this.fetchService.handleGet(loginUrl, userToken);
-    response
+    this.fetchService.handleGet(loginUrl, userToken)
     .then(
-        response => {
+        resp => {
           console.log("LoginComponent response for "+credential.username);
-          this.handleLoginSuccess(userToken);
+          return this.handleLoginSuccess(userToken);
         }
         
     //})  
@@ -35,6 +34,8 @@ export class AppComponent {
     .catch((error) => {
         this.handleLoginError('Login failed. Please try again.');
     });
+
+    //console.log("response: "+response.status);
   }
 
   handleLoginSuccess(userToken: string) {

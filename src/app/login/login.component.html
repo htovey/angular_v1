@@ -7,10 +7,10 @@
           <form #loginForm="ngForm"  [formGroup]=loginFormGroup (ngSubmit)="onSubmit(loginForm)">
             <div [ngClass]="styleClass">
               <div>
-                <input type="text" class="form-control inputBgOpaque" placeholder="Enter User ID" required [(ngModel)]="model.username" formControlName="username"/>
+                <input type="text" class="form-control inputBgOpaque" placeholder="Enter User ID" required formControlName="username"/>
               </div>
               <div>
-                <input type="text" class="form-control inputBgOpaque" placeholder="Enter Password" required [(ngModel)]="model.password" formControlName="password"/>
+                <input type="text" class="form-control inputBgOpaque" placeholder="Enter Password" required formControlName="password"/>
               </div>
           </div>  
           <button [disabled]="loginFormGroup.invalid && styleClass === 'showMe'" class="btn map-btn">Login</button>
