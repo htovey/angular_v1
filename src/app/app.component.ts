@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FetchService } from './utils/fetch.service';
-import { HttpResponse } from '@angular/common/http'
 import { Credential } from './model/credential';
 
 @Component({
@@ -14,6 +13,9 @@ export class AppComponent {
   constructor(private fetchService: FetchService) {}
 
   public styleClass = 'showMe';
+  public loginStyleClass = 'showMe';
+
+  //private response: HttpResponse<JSON>;
 
   ngOnInit(){};
 
@@ -22,25 +24,22 @@ export class AppComponent {
     var tokenBuffer = btoa(credential.username+":"+credential.password);
     const userToken = "Basic "+tokenBuffer;
   
+    //this.fetchService.handleGet(loginUrl, userToken).subscribe((data: any)=>{
     this.fetchService.handleGet(loginUrl, userToken)
-    .then(
-        resp => {
+    .subscribe(response => { 
+         if (response.ok) {
           console.log("LoginComponent response for "+credential.username);
-          return this.handleLoginSuccess(userToken);
-        }
-        
-    //})  
-    )  
-    .catch((error) => {
+          this.handleLoginSuccess(userToken);
+        } else {
         this.handleLoginError('Login failed. Please try again.');
-    });
-
-    //console.log("response: "+response.status);
+        }
+      });
   }
 
   handleLoginSuccess(userToken: string) {
     //this.setState({styleClass: 'hideMe'});
     this.handleSuccess(userToken, false);
+    this.loginStyleClass = "hideMe";
   }
 
   handleLoginError(message: string) {
@@ -51,6 +50,6 @@ export class AppComponent {
 
   // handleSuccess(json: JSON, userToken: string, someBoolean: boolean) {
   handleSuccess(userToken: string, someBoolean: boolean) {
-    alert('SUCCESS!');
+    //show user list view
   }
 }

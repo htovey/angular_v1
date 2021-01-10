@@ -1,0 +1,7 @@
+.hideMe {
+    visibility: hidden;
+}
+
+.showMe {
+    visibility: visible;
+}

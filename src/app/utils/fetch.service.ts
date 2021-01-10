@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable()
@@ -11,13 +11,15 @@ export class FetchService {
             url, 
             {   
                 headers: {
-                    "Content-Type":"application/json",
-                    "Accept" :"application/json",
-                    "Authorization": userToken
+                    "Content-Type" : "application/json",
+                    "Accept" : "application/json",
+                    "Authorization" : userToken
                 },
-                observe: 'response'
+                observe: "response"
             },        
-        ).toPromise();
+        );
+        //    return this.httpClient.get(this.REST_API_SERVER).pipe(catchError(this.handleError));
+
     }
     handlePost() {
         alert('POST!')
