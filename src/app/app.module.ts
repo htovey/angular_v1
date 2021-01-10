@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
+import { FetchService } from './utils/fetch.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,9 +21,10 @@ import { MainComponent } from './main/main.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatCardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [FetchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

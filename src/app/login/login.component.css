@@ -26,38 +26,61 @@
         padding-top: 5px;
         margin: 0 auto;
     }
-    .card-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin: 16px auto;
-        width: 50%;
-    }
 
-    .mat-card {
-        transition: box-shadow 280ms cubic-bezier(.4,0,.2,1);
-        display: block;
-        position: relative;
-        padding: 16px;
-        border-radius: 4px;
-        margin-top: 15px;
-        width: 100%;
-    }
+  .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 16px auto;
+      width: 40%;
+  }
 
-    .mat-card-content {
-        display: block;
-        margin: 25px;
-        font-size: 12pt;
-    }
+  .form-control {
+    font-size: 14pt;
+    line-height: 2em;
+    margin: 10px 0;
+  }
 
-    .mat-card-actions {
-        border-top: solid 1px #e4e5e7;
-    }
+  input[type="text" i] {
+    font-size: 14pt;
+  }
+  .mat-card {
+      transition: box-shadow 280ms cubic-bezier(.4,0,.2,1);
+      display: block;
+      position: relative;
+      padding: 0;
+      border-radius: 4px;
+      margin-top: 15px;
+      width: 95%;
+  }
 
-    .inputBgOpaque:-webkit-autofill {
-        -webkit-box-shadow: 0 0 0 100px white inset;
-        box-shadow: 0 0 0 100px white inset;
-    }
+  .mat-card-title {
+    margin-bottom: 15px;
+    background-color: #1976d2;
+    color: white;
+    padding: 15px;
+  }
+
+
+  .mat-card-content {
+      display: block;
+      margin: 10px auto;
+      line-height: 2em;
+      width: 55%;
+  }
+
+  .mat-card-content form {
+    width: 60%;
+  }
+
+  .mat-card-actions {
+      /* border-top: solid 1px #e4e5e7; */
+  }
+
+  .inputBgOpaque:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 100px white inset;
+      box-shadow: 0 0 0 100px white inset;
+  }
 }
 
 .mat-card:not([class*=mat-elevation-z]) {
@@ -87,7 +110,7 @@
     position: inherit;
     bottom: 0px;
     z-index: -10;
-    height: 20%;
+    height: 0;
 }
 
 :host {
@@ -117,7 +140,7 @@
   }
 
   .toolbar {
-    height: 100px;
+    height: 0;
     margin: -8px;
     display: flex;
     align-items: center;
@@ -130,14 +153,14 @@
     margin: 0 16px;
   }
 
-  .toolbar #twitter-logo {
+  /* .toolbar #twitter-logo {
     height: 40px;
     margin: 0 16px;
   }
 
   .toolbar #twitter-logo:hover {
     opacity: 0.8;
-  }
+  } */
 
   .content {
     display: flex;
